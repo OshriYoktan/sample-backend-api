@@ -21,6 +21,11 @@ public class CustomersController(ICustomerRepository customers, IOrderService or
         return customer is null ? NotFound() : Ok(customer.ToDto());
     }
 
+    /// <summary>Total number of orders per customer (0 for customers without orders), sorted by name.</summary>
+    [HttpGet("order-counts")]
+    public async Task<ActionResult<IReadOnlyList<CustomerOrderCountDto>>> GetOrderCounts(CancellationToken ct) =>
+        Ok(await customers.GetOrderCountsAsync(ct));
+
     /// <summary>All orders of a customer, newest first.</summary>
     [HttpGet("{id:int}/orders")]
     public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrders(int id, CancellationToken ct)
