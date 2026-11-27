@@ -4,3 +4,8 @@ GET {{Orders.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{Orders.Api_HostAddress}}/api/customers/order-counts
+Accept: application/json
+
+###

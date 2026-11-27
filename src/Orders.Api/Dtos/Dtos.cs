@@ -4,6 +4,8 @@ namespace Orders.Api.Dtos;
 
 public record CustomerDto(int Id, string Name, string Email);
 
+public record CustomerOrderCountDto(int CustomerId, string CustomerName, int OrderCount);
+
 public record ProductDto(int Id, string Name, decimal Price, int StockQuantity);
 
 public record OrderDto(
